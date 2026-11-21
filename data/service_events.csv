@@ -1,4 +1,0 @@
-event_id,referral_id,occurred_at,event_type,staff_ref
-E-1,T-1,2026-01-08,visit,S-11
-E-2,T-1,2026-01-15,follow_up,S-11
-E-3,T-4,2026-01-09,visit,S-12

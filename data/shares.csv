@@ -1,0 +1,6 @@
+id,segment,need,fraction,amount,proof,primary
+f1,s1,n1,0.5,4,verified,甲
+f2,s1,n2,0.5,1,verified,甲
+f3,s2,n4,1,2,disputed,甲
+f4,s3,n2,1,1,verified,甲
+f5,s4,n3,1,1,no_access,乙

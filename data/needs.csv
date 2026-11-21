@@ -1,5 +1,0 @@
-need_id,family_ref,group_code,need_type,valid_from,valid_to,status
-N-1,H-01,older_adult,陪诊,2026-01-01,,active
-N-2,H-01,older_adult,代办,2026-01-01,,active
-N-3,H-02,disability,上门服务,2026-01-03,,active
-N-4,H-03,child,陪伴,2026-01-04,2026-01-10,paused
