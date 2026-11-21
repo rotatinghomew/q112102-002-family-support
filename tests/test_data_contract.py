@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FIELDS = {'risk_facts': ['app', 'person', 'purpose', 'started', 'deadline', 'population'], 'sessions': ['session', 'app', 'channel', 'opened'], 'continuations': ['from_session', 'to_session', 'state', 'recognized_on'], 'visibility': ['channel', 'step', 'start', 'end', 'observable'], 'actions': ['session', 'step', 'state', 'at'], 'received': ['proof', 'app', 'kind', 'issuer', 'valid_until', 'signed_on', 'void_on'], 'permitted': ['edition', 'from_date', 'population', 'purpose', 'kind', 'issuer'], 'proposals': ['proposal', 'action', 'step', 'alternate', 'population'], 'adoptions': ['proposal', 'confirmed_on', 'effective_on', 'population']}
+FIELDS = {'messages': ['item', 'origin', 'source', 'text', 'at', 'replaces'], 'history': ['item', 'old_destination', 'accepted_at'], 'labels': ['item', 'review', 'actual', 'confirmed_on'], 'audit_strata': ['month', 'source', 'probability'], 'loss': ['actual', 'destination', 'cost'], 'maturity': ['minimum_label_days', 'max_review_minutes'], 'policy': ['max_risk', 'minimum_random_per_source'], 'intake': ['item', 'source', 'text', 'priority', 'arrive', 'deadline'], 'review_slots': ['slot', 'staff', 'categories', 'start', 'end', 'urgent_only'], 'commitments': ['id', 'item', 'status', 'assignment', 'at'], 'new_facts': ['id', 'kind', 'target', 'value', 'at']}
 
 
 class DataContractTests(unittest.TestCase):

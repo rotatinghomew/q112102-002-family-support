@@ -1,0 +1,6 @@
+item,source,text,priority,arrive,deadline
+n1,热线,暖气停了同时楼下积水,urgent,0,20
+n2,应用,单元口灯不亮,normal,0,42
+n3,代办,家中没暖气同时想问补贴,urgent,8,25
+n4,热线,供热阀门打不开,urgent,10,30
+n5,应用,外墙堆物,normal,12,45

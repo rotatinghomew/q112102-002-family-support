@@ -1,6 +1,0 @@
-proposal,action,step,alternate,population
-b1,reuse,身份核验,联合资质,持本人授权
-b2,reuse,委托核验,联合资质,持本人授权
-b3,reuse,身份核验,联合资质,持本人授权
-b3,reuse,委托核验,联合资质,持本人授权
-b4,defer,预约提醒,,持本人授权
