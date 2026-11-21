@@ -1,4 +1,0 @@
-id,share,fund,kind,minutes,prior,at
-p1,f1,甲,paid,30,,2026-05-12T11:00
-p2,f2,甲,paid,25,,2026-05-12T11:00
-p3,f1,甲,reversal,15,p1,2026-05-23T11:00

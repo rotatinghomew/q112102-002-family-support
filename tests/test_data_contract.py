@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FIELDS = {'plans': ['need', 'resident', 'kind', 'unit', 'required', 'start', 'end'], 'authorizations': ['id', 'need', 'agency', 'start', 'end', 'proxy'], 'referrals': ['id', 'need', 'agency', 'state', 'at'], 'segments': ['id', 'worker', 'agency', 'start', 'end'], 'shares': ['id', 'segment', 'need', 'fraction', 'amount', 'proof', 'primary'], 'funds': ['fund', 'scope', 'start', 'end', 'month_limit_minutes', 'backfill_for'], 'changes': ['id', 'action', 'subject', 'replacement', 'at'], 'payments': ['id', 'share', 'fund', 'kind', 'minutes', 'prior', 'at']}
+FIELDS = {'risk_facts': ['app', 'person', 'purpose', 'started', 'deadline', 'population'], 'sessions': ['session', 'app', 'channel', 'opened'], 'continuations': ['from_session', 'to_session', 'state', 'recognized_on'], 'visibility': ['channel', 'step', 'start', 'end', 'observable'], 'actions': ['session', 'step', 'state', 'at'], 'received': ['proof', 'app', 'kind', 'issuer', 'valid_until', 'signed_on', 'void_on'], 'permitted': ['edition', 'from_date', 'population', 'purpose', 'kind', 'issuer'], 'proposals': ['proposal', 'action', 'step', 'alternate', 'population'], 'adoptions': ['proposal', 'confirmed_on', 'effective_on', 'population']}
 
 
 class DataContractTests(unittest.TestCase):

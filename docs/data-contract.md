@@ -1,15 +1,16 @@
-# 社区转介与服务补助对账：资料契约
+# 跨渠道申请漏斗与表单简化：资料契约
 
-`plans` 记录受助人分项目的需求量，`unit` 是服务本身的计量单位。`authorizations` 指定可接手机构，`proxy` 表明可否直接代为转介。`segments` 是同一人员共同占用的服务区间，`shares` 是其中不同需求的履约证据；`fraction` 用于分配该人员工时，`amount` 用于抵扣服务需求。资助项目以分钟额度核算，工时分摊若产生非整数分钟可用精确比例保留，报表不向上重复取整；只允许在 `backfill_for` 明示对应主项目时补足。补报使用服务日期的授权、项目范围和额度，限额按资金方、自然月执行。
-`verified` 为机构及家庭可核实已执行；`no_access` 为未接触；`disputed` 指该份证据与同一记录的现存证据冲突，不影响可独立认定份额。有已核实与待议记录互相重叠时，待议记录不挤占已核实的工时；两个已核实记录仍互相矛盾时，共享时段先挂起。结算候选优先尊重既有实付余额，剩余额度按服务发生时点先后使用，时点相同按份额编号。`changes` 的 `replace` 替代所指份额的资助归属证明，不抹掉其履约事实；`withdraw` 从给定时间起取消指定服务的未履约需求。`payments` 是财务回单，`reversal` 的 `prior` 指原付款，分钟为正数绝对值。示例时间为当地时间，区间左闭右开。
+`sessions` 是渠道侧会话，`risk_facts` 为申请人用途及观察截止。`continuations` 的 `confirmed` 是可对上申请键的正式接续，`possible` 只在两边风险事实相容的条件下成为候选，同一旧会话不能同时接到两份独立申请。`visibility` 表知晓的采集盲区；未有轨迹不得判定未做。`actions` 的 `finish` 为正式签收，`stop` 为申请人明确不继续，`rejected` 为实质驳回。只有到期且无继续事实的可观察风险集才报告流失比例。`received` 是真实签收的材料，`permitted` 规则给出可验证替代，不在规则中即不替代。
+政策规定 `身份核验` 与 `委托核验` 两个目的必须各保留一份独立证据；签发渠道/用途不适用不得用于当前待审核操作，同一 `proof` 不能同时作为两个目的唯一证据。`proposals` 同一方案可多行，`remove` 移除步骤，`reuse` 指向可替代材料，`defer` 移到正式受理前的末尾。`adoptions` 记录已核准的生效范围；核验目的不因流程简化而作废。日期为本地业务时间，适用区间左闭右开。
 
 ## 输入表
 
-- `plans.csv`：`need`、`resident`、`kind`、`unit`、`required`、`start`、`end`
-- `authorizations.csv`：`id`、`need`、`agency`、`start`、`end`、`proxy`
-- `referrals.csv`：`id`、`need`、`agency`、`state`、`at`
-- `segments.csv`：`id`、`worker`、`agency`、`start`、`end`
-- `shares.csv`：`id`、`segment`、`need`、`fraction`、`amount`、`proof`、`primary`
-- `funds.csv`：`fund`、`scope`、`start`、`end`、`month_limit_minutes`、`backfill_for`
-- `changes.csv`：`id`、`action`、`subject`、`replacement`、`at`
-- `payments.csv`：`id`、`share`、`fund`、`kind`、`minutes`、`prior`、`at`
+- `risk_facts.csv`：`app`、`person`、`purpose`、`started`、`deadline`、`population`
+- `sessions.csv`：`session`、`app`、`channel`、`opened`
+- `continuations.csv`：`from_session`、`to_session`、`state`、`recognized_on`
+- `visibility.csv`：`channel`、`step`、`start`、`end`、`observable`
+- `actions.csv`：`session`、`step`、`state`、`at`
+- `received.csv`：`proof`、`app`、`kind`、`issuer`、`valid_until`、`signed_on`、`void_on`
+- `permitted.csv`：`edition`、`from_date`、`population`、`purpose`、`kind`、`issuer`
+- `proposals.csv`：`proposal`、`action`、`step`、`alternate`、`population`
+- `adoptions.csv`：`proposal`、`confirmed_on`、`effective_on`、`population`

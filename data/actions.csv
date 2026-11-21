@@ -1,0 +1,9 @@
+session,step,state,at
+s1,预审,finish,2026-05-02
+s2,材料上传,finish,2026-05-04
+s2,受理,finish,2026-05-06
+s3,委托核验,rejected,2026-05-12
+s4,材料上传,finish,2026-05-06
+s5,预审,finish,2026-05-07
+s6,受理,finish,2026-05-13
+s7,材料上传,finish,2026-06-05
