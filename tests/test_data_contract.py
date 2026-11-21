@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FIELDS = {'messages': ['item', 'origin', 'source', 'text', 'at', 'replaces'], 'history': ['item', 'old_destination', 'accepted_at'], 'labels': ['item', 'review', 'actual', 'confirmed_on'], 'audit_strata': ['month', 'source', 'probability'], 'loss': ['actual', 'destination', 'cost'], 'maturity': ['minimum_label_days', 'max_review_minutes'], 'policy': ['max_risk', 'minimum_random_per_source'], 'intake': ['item', 'source', 'text', 'priority', 'arrive', 'deadline'], 'review_slots': ['slot', 'staff', 'categories', 'start', 'end', 'urgent_only'], 'commitments': ['id', 'item', 'status', 'assignment', 'at'], 'new_facts': ['id', 'kind', 'target', 'value', 'at']}
+FIELDS = {'regions': ['period', 'area', 'eligible_upper'], 'overlap': ['period', 'area', 'abc', 'people', 'verified', 'reported_on'], 'dependence': ['period', 'area', 'sources', 'basis'], 'address_frame': ['period', 'area', 'frame', 'dwelling', 'independent'], 'sample_plan': ['period', 'area', 'dwelling', 'probability', 'frozen_on'], 'observations': ['id', 'dwelling', 'state', 'observed_on', 'reported_on'], 'access_windows': ['dwelling', 'start', 'end'], 'staff_slots': ['slot', 'start', 'end', 'areas'], 'commitments': ['id', 'slot', 'dwelling', 'notified_on'], 'changes': ['id', 'kind', 'target', 'at'], 'policy': ['area', 'minimum_independent_interviews', 'minimum_missing_share'], 'adjustments': ['id', 'area', 'effective_period', 'extra_slots', 'confirmed_on', 'evidence_cutoff']}
 
 
 class DataContractTests(unittest.TestCase):

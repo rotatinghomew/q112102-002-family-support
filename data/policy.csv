@@ -1,2 +1,4 @@
-max_risk,minimum_random_per_source
-0.18,5
+area,minimum_independent_interviews,minimum_missing_share
+桥南,2,0.01
+河东,2,0.10
+新街,2,0.08

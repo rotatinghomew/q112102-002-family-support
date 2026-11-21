@@ -1,18 +1,19 @@
-# 热线分类风险与人工复核容量：资料契约
+# 漏登居民估计与独立补访：资料契约
 
-`messages` 一行是一份当时可见的来件描述；`origin` 是原始来件，`item` 是独立事项，`replaces` 表示同项描述补充，不能增加样本。`history` 给旧接单事实；`labels` 给已核实真类，`review` 为 `random` 或 `complaint`。标签更正用更晚的 `confirmed_on`，仅在决定时点已收到的标签可用。规则表 `audit_strata` 给原随机抽样策略的纳入概率（0 代表未获支持），每个来源层和月份可不同。`maturity` 给每个核实窗口和最长等待；材料未落入成熟期不作负样本。`loss` 给真实类被派错的代价，相同类代价为零，直派政策的可接受错派风险上限为 `policy.max_risk`。样例是合成数据，不能据来源名假定分析结论。
-`intake` 是本班待判事项：到期按 `deadline`，时间为当地当班分钟，`priority=urgent` 可使用紧急专席。`review_slots` 中各编号各能核实一件，类为空表示全类；一项涉及多个尚未消歧的候选类时，该席位应能判别全部候选类。`commitments.review_held` 占指定席位；`dept_accepted` 表示旧派单已被接单。`new_facts` 在所列分钟进入，缺岗自当笔事实起生效。超时升级记录未移交或未核实的范围，不得算作已办。`loss` 与 `policy` 均为办公室规则，不从相同记录里反推。
+`overlap` 对每期同片区同一定义的三张名册 A/B/C 给出互斥的出现组合 `abc`，1 表示出现，0 表示不出现；000 未观测。`verified=0` 或空值为数字未核清，不按 0 处理，后续补核用较晚时间覆盖同一单元。上界来自 `regions` 的可登记居民数上界。`dependence` 标注哪些期间的来源共享登记入口或存在转介；这些是可检验的适用条件而不是给定的独立性。分析可比较有依据的多名单模型及依赖敏感度；没有可识别支持时保留可证明的界限。不使用姓名等个人数据。
+`address_frame` 每个 `frame` 是地址框之一，两个框的相同 `dwelling` 是同一住宅，不可当两个抽访机会。`independent=0` 表示地址仅由原名册转介，不计入新增的独立抽访覆盖。`access_windows` 为本月地址可访问时段（含开始不含结束），`staff_slots` 每席位一户。`observations` 的 `unanswered` 有访问机会但无人回答；`covered` 或 `new` 表示有效完成、分别确认已登记或新发现。政策覆盖使用符合资格的独立住宅框中有效完成计数；抽查来自 `sample_plan` 中冻结的不同纳入概率的片区住宅名单，估计时区分在框和有效应答、两者不能直接相除作漏登估计。`commitments` 是已通知住户的席位。`adjustments` 为已确认的服务名额调整，记录原统计截止；`changes` 追加观察作废、许可撤回或班次取消。各日期为当地时间。
 
 ## 输入表
 
-- `messages.csv`：`item`、`origin`、`source`、`text`、`at`、`replaces`
-- `history.csv`：`item`、`old_destination`、`accepted_at`
-- `labels.csv`：`item`、`review`、`actual`、`confirmed_on`
-- `audit_strata.csv`：`month`、`source`、`probability`
-- `loss.csv`：`actual`、`destination`、`cost`
-- `maturity.csv`：`minimum_label_days`、`max_review_minutes`
-- `policy.csv`：`max_risk`、`minimum_random_per_source`
-- `intake.csv`：`item`、`source`、`text`、`priority`、`arrive`、`deadline`
-- `review_slots.csv`：`slot`、`staff`、`categories`、`start`、`end`、`urgent_only`
-- `commitments.csv`：`id`、`item`、`status`、`assignment`、`at`
-- `new_facts.csv`：`id`、`kind`、`target`、`value`、`at`
+- `regions.csv`：`period`、`area`、`eligible_upper`
+- `overlap.csv`：`period`、`area`、`abc`、`people`、`verified`、`reported_on`
+- `dependence.csv`：`period`、`area`、`sources`、`basis`
+- `address_frame.csv`：`period`、`area`、`frame`、`dwelling`、`independent`
+- `sample_plan.csv`：`period`、`area`、`dwelling`、`probability`、`frozen_on`
+- `observations.csv`：`id`、`dwelling`、`state`、`observed_on`、`reported_on`
+- `access_windows.csv`：`dwelling`、`start`、`end`
+- `staff_slots.csv`：`slot`、`start`、`end`、`areas`
+- `commitments.csv`：`id`、`slot`、`dwelling`、`notified_on`
+- `changes.csv`：`id`、`kind`、`target`、`at`
+- `policy.csv`：`area`、`minimum_independent_interviews`、`minimum_missing_share`
+- `adjustments.csv`：`id`、`area`、`effective_period`、`extra_slots`、`confirmed_on`、`evidence_cutoff`
